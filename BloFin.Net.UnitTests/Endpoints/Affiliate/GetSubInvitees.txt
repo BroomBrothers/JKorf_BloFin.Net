@@ -1,0 +1,24 @@
+GET
+/api/v1/affiliate/sub-invitees
+true
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+    {
+      "id": 181,
+      "uid": "30285086315",
+      "subAffiliateUid": "30285102093",
+      "subAffiliateLevel": "2",
+      "registerTime": "1706861990475",
+      "totalTradingVolume": "3136.78",
+      "totalTradingFee": "0.4918",
+      "totalCommision": "0.1475",
+      "totalDeposit": "0",
+      "totalWithdrawal": "100",
+      "kycLevel": "0",
+      "equity": "0.1",
+      "totalEquity": "0.1"
+    }
+  ]
+}

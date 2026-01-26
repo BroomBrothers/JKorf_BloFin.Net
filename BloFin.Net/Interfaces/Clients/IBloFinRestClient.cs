@@ -17,6 +17,11 @@ namespace BloFin.Net.Interfaces.Clients
         /// <see cref="IBloFinRestClientAccountApi"/>
         public IBloFinRestClientAccountApi AccountApi { get; }
         /// <summary>
+        /// Affiliate API endpoints
+        /// </summary>
+        /// <see cref="IBloFinRestClientAffiliateApi "/>
+        public IBloFinRestClientAffiliateApi AffiliateApi { get; }
+        /// <summary>
         /// Futures API endpoints
         /// </summary>
         /// <see cref="IBloFinRestClientFuturesApi"/>
