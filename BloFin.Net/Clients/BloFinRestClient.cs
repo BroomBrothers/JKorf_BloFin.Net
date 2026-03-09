@@ -21,7 +21,9 @@ namespace BloFin.Net.Clients
                 
          /// <inheritdoc />
         public IBloFinRestClientAccountApi AccountApi { get; }
-         /// <inheritdoc />
+        /// <inheritdoc />
+        public IBloFinRestClientAffiliateApi AffiliateApi { get; }
+        /// <inheritdoc />
         public IBloFinRestClientFuturesApi FuturesApi { get; }
 
         #endregion
@@ -48,6 +50,7 @@ namespace BloFin.Net.Clients
             Initialize(options.Value);
                         
             AccountApi = AddApiClient(new BloFinRestClientAccountApi(_logger, httpClient, options.Value));
+            AffiliateApi = AddApiClient(new BloFinRestClientAffiliateApi(_logger, httpClient, options.Value));
             FuturesApi = AddApiClient(new BloFinRestClientFuturesApi(_logger, httpClient, options.Value));
         }
 
@@ -57,6 +60,7 @@ namespace BloFin.Net.Clients
         public void SetOptions(UpdateOptions options)
         {
             AccountApi.SetOptions(options);
+            AffiliateApi.SetOptions(options);
             FuturesApi.SetOptions(options);
         }
 
@@ -73,6 +77,7 @@ namespace BloFin.Net.Clients
         public void SetApiCredentials(ApiCredentials credentials)
         {
             AccountApi.SetApiCredentials(credentials);
+            AffiliateApi.SetApiCredentials(credentials);
             FuturesApi.SetApiCredentials(credentials);
         }
     }

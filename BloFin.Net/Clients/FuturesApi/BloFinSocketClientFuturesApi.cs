@@ -250,16 +250,19 @@ namespace BloFin.Net.Clients.FuturesApi
             var handler = new Action<DateTime, string?, int, BloFinSocketUpdate<BloFinPosition[]>>((receiveTime, originalData, invocations, data) =>
             {
                 DateTime? timestamp = data.Data.Any() ? data.Data.Max(x => x.UpdateTime) : null;
-                if (data.Action != "snapshot")
+                if (data.Action != "snapshot" && timestamp != null)
                     UpdateTimeOffset(timestamp!.Value);
 
-                onMessage(
-                    new DataEvent<BloFinPosition[]>(Exchange, data.Data, receiveTime, originalData)
-                        .WithUpdateType(data.Action == "snapshot" ? SocketUpdateType.Snapshot : invocations == 1 ? SocketUpdateType.Snapshot : SocketUpdateType.Update)
-                        .WithStreamId("positions")
-                        .WithSymbol(data.Data.First().Symbol)
-                        .WithDataTimestamp(timestamp, GetTimeOffset())
-                    );
+                var dataEvent = new DataEvent<BloFinPosition[]>(Exchange, data.Data, receiveTime, originalData)
+                    .WithUpdateType(data.Action == "snapshot" ? SocketUpdateType.Snapshot :
+                        invocations == 1 ? SocketUpdateType.Snapshot : SocketUpdateType.Update)
+                    .WithStreamId("positions")
+                    .WithDataTimestamp(timestamp, GetTimeOffset());
+
+                if (data.Data.Any())
+                    dataEvent = dataEvent.WithSymbol(data.Data.First().Symbol);
+
+                onMessage(dataEvent);
             });
 
             var subscription = new BloFinSubscription<BloFinPosition[]>(_logger, this, "positions", null, handler, true);
@@ -272,16 +275,19 @@ namespace BloFin.Net.Clients.FuturesApi
             var handler = new Action<DateTime, string?, int, BloFinSocketUpdate<BloFinOrder[]>>((receiveTime, originalData, invocations, data) =>
             {
                 DateTime? timestamp = data.Data.Any() ? data.Data.Max(x => x.UpdateTime) : null;
-                if (data.Action != "snapshot")
+                if (data.Action != "snapshot" && timestamp != null)
                     UpdateTimeOffset(timestamp!.Value);
 
-                onMessage(
-                    new DataEvent<BloFinOrder[]>(Exchange, data.Data, receiveTime, originalData)
-                        .WithUpdateType(data.Action == "snapshot" ? SocketUpdateType.Snapshot : invocations == 1 ? SocketUpdateType.Snapshot : SocketUpdateType.Update)
-                        .WithStreamId("orders")
-                        .WithSymbol(data.Data.First().Symbol)
-                        .WithDataTimestamp(timestamp, GetTimeOffset())
-                    );
+                var dataEvent = new DataEvent<BloFinOrder[]>(Exchange, data.Data, receiveTime, originalData)
+                    .WithUpdateType(data.Action == "snapshot" ? SocketUpdateType.Snapshot :
+                        invocations == 1 ? SocketUpdateType.Snapshot : SocketUpdateType.Update)
+                    .WithStreamId("orders")
+                    .WithDataTimestamp(timestamp, GetTimeOffset());
+
+                if (data.Data.Any())
+                    dataEvent = dataEvent.WithSymbol(data.Data.First().Symbol);
+
+                onMessage(dataEvent);
             });
 
             var subscription = new BloFinSubscription<BloFinOrder[]>(_logger, this, "orders", null, handler, true);
@@ -294,16 +300,19 @@ namespace BloFin.Net.Clients.FuturesApi
             var handler = new Action<DateTime, string?, int, BloFinSocketUpdate<BloFinAlgoOrderUpdate[]>>((receiveTime, originalData, invocations, data) =>
             {
                 DateTime? timestamp = data.Data.Any() ? data.Data.Max(x => x.UpdateTime) : null;
-                if (data.Action != "snapshot")
+                if (data.Action != "snapshot" && timestamp != null)
                     UpdateTimeOffset(timestamp!.Value);
 
-                onMessage(
-                    new DataEvent<BloFinAlgoOrderUpdate[]>(Exchange, data.Data, receiveTime, originalData)
-                        .WithUpdateType(data.Action == "snapshot" ? SocketUpdateType.Snapshot : invocations == 1 ? SocketUpdateType.Snapshot : SocketUpdateType.Update)
-                        .WithStreamId("orders-algo")
-                        .WithSymbol(data.Data.First().Symbol)
-                        .WithDataTimestamp(timestamp, GetTimeOffset())
-                    );
+                var dataEvent = new DataEvent<BloFinAlgoOrderUpdate[]>(Exchange, data.Data, receiveTime, originalData)
+                    .WithUpdateType(data.Action == "snapshot" ? SocketUpdateType.Snapshot :
+                        invocations == 1 ? SocketUpdateType.Snapshot : SocketUpdateType.Update)
+                    .WithStreamId("orders-algo")
+                    .WithDataTimestamp(timestamp, GetTimeOffset());
+
+                if (data.Data.Any())
+                    dataEvent = dataEvent.WithSymbol(data.Data.First().Symbol);
+
+                onMessage(dataEvent);
             });
 
             var subscription = new BloFinSubscription<BloFinAlgoOrderUpdate[]>(_logger, this, "orders-algo", null, handler, true);

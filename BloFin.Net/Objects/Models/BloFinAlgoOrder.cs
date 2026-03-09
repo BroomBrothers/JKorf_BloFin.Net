@@ -40,6 +40,11 @@ namespace BloFin.Net.Objects.Models
         [JsonPropertyName("side")]
         public OrderSide Side { get; set; }
         /// <summary>
+        /// Reduce Only
+        /// </summary>
+        [JsonPropertyName("reduceOnly")]
+        public bool ReduceOnly { get; set; }
+        /// <summary>
         /// Quantity
         /// </summary>
         [JsonPropertyName("size")]

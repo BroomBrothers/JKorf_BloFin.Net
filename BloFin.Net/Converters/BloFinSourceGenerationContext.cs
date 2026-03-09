@@ -42,6 +42,9 @@ namespace BloFin.Net.Converters
     [JsonSerializable(typeof(BloFinResponse<BloFinUserTrade[]>))]
     [JsonSerializable(typeof(BloFinResponse<BloFinPriceLimit>))]
     [JsonSerializable(typeof(BloFinResponse<BloFinClosePositionResult>))]
+    [JsonSerializable(typeof(BloFinResponse<BloFinInvitee[]>))]
+    [JsonSerializable(typeof(BloFinResponse<BloFinSubInvitee[]>))]
+    [JsonSerializable(typeof(BloFinResponse<BloFinSubAffiliate[]>))]
     [JsonSerializable(typeof(BloFinResponse))]
 
     [JsonSerializable(typeof(BloFinSocketRequest))]

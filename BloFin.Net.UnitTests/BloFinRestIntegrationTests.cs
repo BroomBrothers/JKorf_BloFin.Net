@@ -57,6 +57,14 @@ namespace BloFin.Net.UnitTests
         }
 
         [Test]
+        public async Task TestAffiliate()
+        {
+            await RunAndCheckResult(client => client.AffiliateApi.GetDirectInvitees(default, default, default, default, default, default, default, CancellationToken.None), true);
+            await RunAndCheckResult(client => client.AffiliateApi.GetSubInvitees(default, default, default, default, default, default, CancellationToken.None), true);
+            await RunAndCheckResult(client => client.AffiliateApi.GetSubAffiliates(default, default, default, default, default, default, CancellationToken.None), true);
+        }
+
+        [Test]
         public async Task TestFuturesAccount()
         {
             await RunAndCheckResult(client => client.FuturesApi.Account.GetBalancesAsync(default, CancellationToken.None), true);

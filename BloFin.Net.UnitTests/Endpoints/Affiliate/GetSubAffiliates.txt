@@ -1,0 +1,24 @@
+GET
+/api/v1/affiliate/sub-affiliates
+true
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+     {
+       "id": 123,
+       "uid": "30285143170",
+       "commissionRate": "0.1",
+       "createTime": "1707018797957",
+       "upperAffiliate": "30285102093",
+       "invitees": "1",
+       "totalTradedUsers": "1",
+       "totalTradingVolume": "3120",
+       "totalTradingFee": "0.624",
+       "totalCommision": "0.0624",
+       "myCommision": "0.0104",
+       "tag": "",
+       "kycLevel": "0"
+     }
+  ]
+}

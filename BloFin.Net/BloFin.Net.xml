@@ -185,6 +185,9 @@
         <member name="P:BloFin.Net.Clients.BloFinRestClient.AccountApi">
             <inheritdoc />
         </member>
+        <member name="P:BloFin.Net.Clients.BloFinRestClient.AffiliateApi">
+            <inheritdoc />
+        </member>
         <member name="P:BloFin.Net.Clients.BloFinRestClient.FuturesApi">
             <inheritdoc />
         </member>
@@ -698,6 +701,11 @@
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
         </member>
+        <member name="P:BloFin.Net.Converters.BloFinSourceGenerationContext.BloFinResponseBloFinInviteeArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
         <member name="P:BloFin.Net.Converters.BloFinSourceGenerationContext.BloFinResponseBloFinKlineArray">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
@@ -759,6 +767,16 @@
             </summary>
         </member>
         <member name="P:BloFin.Net.Converters.BloFinSourceGenerationContext.BloFinResponseBloFinPriceLimit">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Converters.BloFinSourceGenerationContext.BloFinResponseBloFinSubAffiliateArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Converters.BloFinSourceGenerationContext.BloFinResponseBloFinSubInviteeArray">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
@@ -1028,6 +1046,16 @@
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
         </member>
+        <member name="P:BloFin.Net.Converters.BloFinSourceGenerationContext.BloFinInvitee">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Converters.BloFinSourceGenerationContext.BloFinInviteeArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
         <member name="P:BloFin.Net.Converters.BloFinSourceGenerationContext.BloFinKline">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
@@ -1134,6 +1162,26 @@
             </summary>
         </member>
         <member name="P:BloFin.Net.Converters.BloFinSourceGenerationContext.BloFinPriceLimit">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Converters.BloFinSourceGenerationContext.BloFinSubAffiliate">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Converters.BloFinSourceGenerationContext.BloFinSubAffiliateArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Converters.BloFinSourceGenerationContext.BloFinSubInvitee">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Converters.BloFinSourceGenerationContext.BloFinSubInviteeArray">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
             </summary>
@@ -1903,6 +1951,54 @@
             Get the shared rest requests client. This interface is shared with other exchanges to allow for a common implementation for different exchanges.
             </summary>
         </member>
+        <member name="T:BloFin.Net.Interfaces.Clients.Apis.IBloFinRestClientAffiliateApi">
+            <summary>
+            BloFin affiliate API endpoints
+            </summary>
+        </member>
+        <member name="M:BloFin.Net.Interfaces.Clients.Apis.IBloFinRestClientAffiliateApi.GetDirectInvitees(System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Retrieve the direct invitees info of the affiliate
+            <para><a href="https://docs.blofin.com/index.html#get-direct-invitees" /></para>
+            </summary>
+            <param name="uid">Invitee's UID</param>
+            <param name="needEquity">Whether to return the user's equity in the results.</param>
+            <param name="afterId">Returns results after this id</param>
+            <param name="beforeId">Returns results before this id</param>
+            <param name="startTime">Filter by start time</param>
+            <param name="endTime">Filter by end time</param>
+            <param name="limit">Max number of results, max 200. Max 30 when needEquity is true</param>
+            <param name="ct">Cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:BloFin.Net.Interfaces.Clients.Apis.IBloFinRestClientAffiliateApi.GetSubInvitees(System.String,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Retrieve the invitees info of sub affiliates.
+            <para><a href="https://docs.blofin.com/index.html#get-sub-invitees" /></para>
+            </summary>
+            <param name="subAffiliateUid">Invitee's UID</param>
+            <param name="afterId">Returns results after this id</param>
+            <param name="beforeId">Returns results before this id</param>
+            <param name="startTime">Filter by start time</param>
+            <param name="endTime">Filter by end time</param>
+            <param name="limit">Max number of results, max 30.</param>
+            <param name="ct">Cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:BloFin.Net.Interfaces.Clients.Apis.IBloFinRestClientAffiliateApi.GetSubAffiliates(System.String,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Retrieve the info of sub affiliates.
+            <para><a href="https://docs.blofin.com/index.html#get-sub-affiliates" /></para>
+            </summary>
+            <param name="subAffiliateUid">Sub Affiliates UID</param>
+            <param name="afterId">Returns results after this id</param>
+            <param name="beforeId">Returns results before this id</param>
+            <param name="startTime">Filter by start time</param>
+            <param name="endTime">Filter by end time</param>
+            <param name="limit">Max number of results, max 100.</param>
+            <param name="ct">Cancellation token</param>
+            <returns></returns>
+        </member>
         <member name="T:BloFin.Net.Interfaces.Clients.AccountApi.IBloFinRestClientAccountApiShared">
             <summary>
             Shared interface for account rest API usage
@@ -2574,6 +2670,12 @@
             </summary>
             <see cref="T:BloFin.Net.Interfaces.Clients.Apis.IBloFinRestClientAccountApi"/>
         </member>
+        <member name="P:BloFin.Net.Interfaces.Clients.IBloFinRestClient.AffiliateApi">
+            <summary>
+            Affiliate API endpoints
+            </summary>
+            <see cref="T:BloFin.Net.Interfaces.Clients.Apis.IBloFinRestClientAffiliateApi"/>
+        </member>
         <member name="P:BloFin.Net.Interfaces.Clients.IBloFinRestClient.FuturesApi">
             <summary>
             Futures API endpoints
@@ -2739,6 +2841,11 @@
         <member name="P:BloFin.Net.Objects.Models.BloFinAlgoOrder.Side">
             <summary>
             Side
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinAlgoOrder.ReduceOnly">
+            <summary>
+            Reduce Only
             </summary>
         </member>
         <member name="P:BloFin.Net.Objects.Models.BloFinAlgoOrder.Quantity">
@@ -3376,6 +3483,71 @@
             Whether the kline is finished
             </summary>
         </member>
+        <member name="T:BloFin.Net.Objects.Models.BloFinInvitee">
+            <summary>
+            Blofin Direct Invitee
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinInvitee.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinInvitee.Uid">
+            <summary>
+            UID of invitee
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinInvitee.TotalTradingVolume">
+            <summary>
+            Total futures trading amount of invitee
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinInvitee.TotalTradingFee">
+            <summary>
+            Total futures trading fee of invitee
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinInvitee.TotalCommission">
+            <summary>
+            Total commission of invitee
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinInvitee.TotalDeposit">
+            <summary>
+            Total deposit amount, expressed in USDT.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinInvitee.TotalWithdrawal">
+            <summary>
+            Total withdrawn amount, expressed in USDT.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinInvitee.Equity">
+            <summary>
+            Total equity of futures account in USDT.
+            </summary>
+            <remarks>0 when not requested</remarks>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinInvitee.TotalEquity">
+            <summary>
+            Total equity of all accounts in USDT.
+            </summary>
+            <remarks>0 when not requested</remarks>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinInvitee.KycLevel">
+            <summary>
+            KYC level of invitee
+             - 0 = Non KYC
+             - 1 = Complete personal information verification
+             - 2 = Complete address proof verification
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinInvitee.RegisterTime">
+            <summary>
+            Register time of invitee
+            </summary>
+        </member>
         <member name="T:BloFin.Net.Objects.Models.BloFinKline">
             <summary>
             Kline info
@@ -3934,6 +4106,144 @@
         <member name="P:BloFin.Net.Objects.Models.BloFinPriceLimit.MinPrice">
             <summary>
             Min price
+            </summary>
+        </member>
+        <member name="T:BloFin.Net.Objects.Models.BloFinSubAffiliate">
+            <summary>
+            BloFin Sub Affiliate
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubAffiliate.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubAffiliate.Uid">
+            <summary>
+            UID of sub-affiliate
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubAffiliate.CommissionRate">
+            <summary>
+            Commission rate of sub affiliate
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubAffiliate.CreateTime">
+            <summary>
+            Create time of sub affiliate.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubAffiliate.UpperAffiliate">
+            <summary>
+            Upper affiliate of sub affiliate.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubAffiliate.Invitees">
+            <summary>
+            Total invitees of sub affiliate.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubAffiliate.TotalTradedUsers">
+            <summary>
+            Total traded invitees of sub affiliate.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubAffiliate.TotalTradingVolume">
+            <summary>
+            Total futures trading volume of sub affiliates invitees.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubAffiliate.TotalTradingFee">
+            <summary>
+            Total futures trading fee of sub affiliates invitees.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubAffiliate.TotalCommission">
+            <summary>
+            Total commission of sub affiliate
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubAffiliate.MyCommision">
+            <summary>
+            My commission got from sub affiliate
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubAffiliate.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubAffiliate.KycLevel">
+            <summary>
+            KYC level of invitee
+             - 0 = Non KYC
+             - 1 = Complete personal information verification
+             - 2 = Complete address proof verification
+            </summary>
+        </member>
+        <member name="T:BloFin.Net.Objects.Models.BloFinSubInvitee">
+            <summary>
+            Blofin Sub Invitee
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubInvitee.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubInvitee.Uid">
+            <summary>
+            UID of invitee
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubInvitee.TotalTradingVolume">
+            <summary>
+            Total futures trading amount of invitee
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubInvitee.TotalTradingFee">
+            <summary>
+            Total futures trading fee of invitee
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubInvitee.TotalCommission">
+            <summary>
+            Total commission of invitee
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubInvitee.TotalDeposit">
+            <summary>
+            Total deposit amount, expressed in USDT.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubInvitee.TotalWithdrawal">
+            <summary>
+            Total withdrawn amount, expressed in USDT.
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubInvitee.Equity">
+            <summary>
+            Total equity of futures account in USDT.
+            </summary>
+            <remarks>0 when not requested</remarks>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubInvitee.TotalEquity">
+            <summary>
+            Total equity of all accounts in USDT.
+            </summary>
+            <remarks>0 when not requested</remarks>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubInvitee.KycLevel">
+            <summary>
+            KYC level of invitee
+             - 0 = Non KYC
+             - 1 = Complete personal information verification
+             - 2 = Complete address proof verification
+            </summary>
+        </member>
+        <member name="P:BloFin.Net.Objects.Models.BloFinSubInvitee.RegisterTime">
+            <summary>
+            Register time of invitee
             </summary>
         </member>
         <member name="T:BloFin.Net.Objects.Models.BloFinSymbol">

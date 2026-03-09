@@ -12,6 +12,7 @@ true
             "marginMode": "cross",
             "positionSide": "net",
             "side": "sell",
+            "reduceOnly": "false",
             "orderType": "trigger",
             "size": "1",
             "actualSize": "1",
